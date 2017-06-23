@@ -31,19 +31,19 @@ If you want to use [react-router](https://github.com/ReactTraining/react-router)
 
 But with react-router, the build won't work without a server. If you were to open the index.html file, it won't be able to find the files.
 
-To build a simple localhost server to serve up your front-end react production for you to see before you host it on a server, we will use [express.js](https://expressjs.com/)
+To build a simple localhost server to serve up your front-end react production for you to see before you host it on a server, we will use [express.js](https://expressjs.com/).
 
 In your terminal install expressjs:
 
 ```
-> npm i express
+> npm install express
 ```
 *with npm 5, --save is not required. It will save by default.*
 
 If you are not using NPM 5
 
 ```
-> npm i express --save
+> npm install express --save
 ```
 
 then we will create a *server.js* file on the root directory.
