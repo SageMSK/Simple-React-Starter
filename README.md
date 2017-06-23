@@ -27,7 +27,7 @@ For Production:
 
 ## Small note
 
-If you want to use [react-router](https://github.com/ReactTraining/react-router), just a small claimer from my learning and experience. When you build to production without react-router, the build will work perfectly fine. You can open the index.html file in your dist folder.
+If you want to use [react-router](https://github.com/ReactTraining/react-router), just a small claimer from my learning experience. When you build to production without react-router, the build will work perfectly fine. You can open the index.html file in your dist folder.
 
 But with react-router, the build won't work without a server. If you were to open the index.html file, it won't be able to find the files.
 
