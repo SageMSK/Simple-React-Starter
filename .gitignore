@@ -3,3 +3,7 @@ node_modules
 
 # ignore dist folder
 dist
+
+# IntelliJ
+*.iml
+/.idea

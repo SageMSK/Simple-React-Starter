@@ -1,8 +1,6 @@
 # Simple React Starter
 
-First, You need [node.js](https://nodejs.org/en/) and a text editor.
-
-
+First, you will need [node.js](https://nodejs.org/en/) and a text editor.
 
 To start:
 

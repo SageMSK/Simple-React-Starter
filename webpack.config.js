@@ -1,9 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-var config = {
+const config = {
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
@@ -43,7 +43,12 @@ var config = {
               options: { sourceMap: true }
             }
           ]
-        }
+        }, // For Bootstrap and etc.
+        {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
+        {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
+        {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
+        {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml'},
+        {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'}
     ]
   },
   plugins: [
@@ -56,7 +61,7 @@ var config = {
       }
     })
   ]
-}
+};
 
 /*
   FOR PRODUCTION
@@ -71,7 +76,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
-  )
+  );
 }
 
 module.exports = config;
