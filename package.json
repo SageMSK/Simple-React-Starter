@@ -4,15 +4,24 @@
   "engines": {
     "node": ">= 7.6.0"
   },
-  "description": "Simple React Starter",
+  "description": "simple react starter",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --history-api-fallback --open",
     "lint": "eslint src",
     "build": "set NODE_ENV=production && webpack"
   },
-  "author": "Min Soo Kim",
-  "license": "ISC",
+  "author": "Min Soo Kim (http://github.com/sagemsk)",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "reactjs",
+    "live",
+    "boilerplate",
+    "starter",
+    "webpack-dev-server",
+    "webpack"
+  ],
   "babel": {
     "presets": [
       "es2015",

@@ -1,6 +1,6 @@
 # Simple React Starter
 
-First, you will need [node.js](https://nodejs.org/en/) and a text editor.
+First, you will need [Node.js](https://nodejs.org/en/) and a text editor of your choice ([atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), or [Sublime Text 3](https://www.sublimetext.com/3)).
 
 To start:
 
@@ -9,9 +9,9 @@ To start:
 > npm run dev
 ```
 
-This boilerplate is able to support both CSS and SASS files. It's your choice. It also has basic eslint recommendation setting and extra react linting.
+This boilerplate supports both CSS and SASS files. It's your choice. It also has basic eslint recommendation setting and extra react linting as well.
 
-In order to run/check linting:
+In order to run eslint:
 
 ```
 > npm run lint
@@ -25,20 +25,20 @@ For Production:
 
 ## Small note
 
-If you want to use [react-router](https://github.com/ReactTraining/react-router), just a small claimer from my learning experience. When you build to production without react-router, the build will work perfectly fine. You can open the index.html file in your dist folder.
+If you want to use [react-router](https://github.com/ReactTraining/react-router), just a small claimer from my learning experience. When you build to production without react-router, the build will work perfectly fine if you open the index.html file in your dist folder.
 
-But with react-router, the build won't work without a server. If you were to open the index.html file, it won't be able to find the files.
+But with react-router, the build won't work without a server. If you were to open the index.html file, it won't be able to find the bundle.js files.
 
-To build a simple localhost server to serve up your front-end react production for you to see before you host it on a server, we will use [express.js](https://expressjs.com/).
+To build a simple localhost server to serve up your front-end react production application for you to inspect and see before you host it on a server, we will use [express.js](https://expressjs.com/) to create a local server on your machine.
 
 In your terminal install expressjs:
 
 ```
 > npm install express
 ```
-*with npm 5, --save is not required. It will save by default.*
+*with npm@5, --save is not required. It will save by default.*
 
-If you are not using NPM 5
+If you are not using npm@5
 
 ```
 > npm install express --save
