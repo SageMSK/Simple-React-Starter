@@ -7,6 +7,12 @@ dist
 # package-lock.json
 package-lock.json
 
-# IntelliJ
+# IntelliJ/Webstorm
 *.iml
 /.idea
+
+#VSCode
+.vscode
+
+# Mac
+.DS_Store

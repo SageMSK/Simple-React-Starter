@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const config = {
@@ -13,8 +14,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -24,25 +24,29 @@ const config = {
           loader: 'babel-loader'
         },
         {
-          test: /(\.css|\.scss|\.sass)$/, 
-          use: [
-            'style-loader', // creates style nodes from JS strings
-            { // translates CSS into CommonJS
-              loader: 'css-loader',
-              options: { sourceMap: true }
-            },
-            {
-              loader: 'postcss-loader',
-              options: { 
-                sourceMap: true,
-                plugins: () => [autoprefixer]
+          test: /(\.css|\.scss|\.sass)$/,
+          // use ExtractTextPlugin so they can be outputted to their own .css file
+          use: ExtractTextPlugin.extract({
+            use: [
+              { // translates CSS into CommonJS
+                loader: 'css-loader',
+                options: { sourceMap: true }
+              },
+              {
+                loader: 'postcss-loader',
+                options: { 
+                  sourceMap: true,
+                  plugins() { return [autoprefixer({ browsers: 'last 3 versions' })]; }
+                }
+              },
+              { // compiles Sass to CSS
+                loader: 'sass-loader',
+                options: { sourceMap: true }
               }
-            },
-            { // compiles Sass to CSS
-              loader: 'sass-loader',
-              options: { sourceMap: true }
-            }
-          ]
+            ],
+            // creates style nodes from JS strings
+            fallback: 'style-loader'
+          })
         },
         {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
         {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
@@ -59,6 +63,10 @@ const config = {
         removeComments: true,
         collapseWhitespace: true
       }
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].bundle.css',
+      disable: process.env.NODE_ENV === "development"
     })
   ]
 };

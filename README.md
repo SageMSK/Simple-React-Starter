@@ -23,46 +23,41 @@ For Production:
 > npm run build
 ```
 
-## Small note
+## Adding React Router
 
-If you want to use [react-router](https://github.com/ReactTraining/react-router), just a small claimer from my learning experience. When you build to production without react-router, the build will work perfectly fine if you open the index.html file in your dist folder.
-
-But with react-router, the build won't work without a server. If you were to open the index.html file, it won't be able to find the bundle.js files.
-
-To build a simple localhost server to serve up your front-end react production application for you to inspect and see before you host it on a server, we will use [express.js](https://expressjs.com/) to create a local server on your machine.
-
-In your terminal install expressjs:
+If you want to use [react-router](https://github.com/ReactTraining/react-router), you should use react-router-dom which is the new version 4.
 
 ```
-> npm install express
+> npm install react-router-dom
 ```
-*with npm@5, --save is not required. It will save by default.*
+*with npm@5, --save is not required. It will automatically save to your package.json dev dependencies by default.*
 
 If you are not using npm@5
 
 ```
-> npm install express --save
+> npm install react-router-dom --save
 ```
 
-then we will create a *server.js* file on the root directory.
-In the server.js file:
+Also in your webpack config file, head over to the *output* section and make sure to add the public path
 
 ```js
-const express = require('express');
-const path = require('path');
-
-const app = express();
-
-app.use(express.static(path.join(__dirname, 'dist')));
-
-app.get('/', (req, res) => {
-  res.sendFile('index.html');
-});
-
-app.set('port', process.env.PORT || 3000);
-const server = app.listen(app.get('port'), () => {
-  console.log(`Express App running on PORT: ${server.address().port}`);
-});
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    // Add the public path below
+    publicPath: '/',
+    filename: '[name].bundle.js'
+  },
 ```
 
-You can see this on your browser on **localhost:3000**.
+### With React Router
+
+When you build to production (*npm run build*) with react router and you wish to see your amazing project in the dist folder by opening up the index html, this will not work. React router needs a server. So if you want to see your production build project locally for any reasons, all you have to do is use [expressjs](http://expressjs.com/) or any framework and build a simple localhost server.
+
+### Small Note (For people new to react)
+
+You can just add publicPath: '/' just to be on the safe side and don't want to be bother if you wish to expand on this starter boilerplate. Let me quickly explain what happens with publicPath when you build to production in the most simplest and non-technical way. When you run ``` npm run build ```, in the index.html file created in the dist folder will have the path to find both the css bundle and js bundle files. But with publicPath: '/' added, the index.html file won't be able to find the bundle files without a server.
+
+**WITHOUT REACT-ROUTER, JUST REACT**
+If you added the publicPath and you wish to see your production build application, you can fix this simply by deleting the '/' in front of the bundle files in your index.html file.
+i.e. href="/main.bundle.css" -> href="main.bundle.css"
+
