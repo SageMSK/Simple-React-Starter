@@ -7,7 +7,7 @@
   "description": "simple react starter",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --history-api-fallback --open",
+    "dev": "webpack-dev-server --open",
     "lint": "eslint src",
     "build": "set NODE_ENV=production && webpack -p"
   },

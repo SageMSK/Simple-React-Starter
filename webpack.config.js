@@ -55,6 +55,11 @@ const config = {
         {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'}
     ]
   },
+  devServer: {
+    historyApiFallback: true,
+    // Messages like webpack bundle info is not shown: https://webpack.js.org/configuration/dev-server/#devserver-noinfo-
+    noInfo: true
+  },
   plugins: [
     // Create HTML file that includes references to bundled CSS and JS. 
     new HtmlWebpackPlugin({
@@ -64,6 +69,7 @@ const config = {
         collapseWhitespace: true
       }
     }),
+    // In production, create a separate CSS bundle file and disable this if dev
     new ExtractTextPlugin({
       filename: '[name].bundle.css',
       disable: process.env.NODE_ENV === "development"
@@ -73,8 +79,8 @@ const config = {
 
 /*
   FOR PRODUCTION
-  In package.json -> "build": "NODE_ENV=production webpack -p"
-  Windows: "build": "set NODE_ENV=production && webpack -p"
+  In package.json -> "build": "NODE_ENV=production webpack -p" or
+  on Windows: "build": "set NODE_ENV=production && webpack -p"
 */
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
