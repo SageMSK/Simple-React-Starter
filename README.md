@@ -2,7 +2,9 @@
 
 First, you will need [Node.js](https://nodejs.org/en/) and a text editor of your choice ([atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), or [Sublime Text 3](https://www.sublimetext.com/3)).
 
-To start:
+## Getting Started
+
+To start, install all the packages/library we require:
 
 ```
 > npm install
