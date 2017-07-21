@@ -4,7 +4,7 @@ First, you will need [Node.js](https://nodejs.org/en/) and a text editor of your
 
 ## Getting Started
 
-To start, install all the packages/library we require:
+To start, install all the packages/libraries we require:
 
 ```
 > npm install
