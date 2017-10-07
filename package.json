@@ -12,7 +12,7 @@
     "build": "set NODE_ENV=production && webpack -p"
   },
   "author": "Min Soo Kim (http://github.com/sagemsk)",
-  "license": "MIT",
+  "license": "ISC",
   "keywords": [
     "react",
     "reactjs",

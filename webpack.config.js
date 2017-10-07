@@ -10,7 +10,7 @@ const config = {
   },
   devtool: 'source-map',
   entry: [
-    path.resolve(__dirname, 'src/index.js')
+    path.resolve(__dirname, 'src/index.jsx')
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -19,7 +19,7 @@ const config = {
   module: {
     rules: [
         { 
-          test: /\.js?$/, 
+          test: /\.jsx?$/, 
           exclude: /node_modules/, 
           loader: 'babel-loader'
         },
@@ -47,7 +47,7 @@ const config = {
             // creates style nodes from JS strings
             fallback: 'style-loader'
           })
-        },
+        }, // Should work for Bootstrap
         {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
         {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
         {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
